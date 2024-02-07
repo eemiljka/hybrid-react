@@ -1,4 +1,3 @@
-import {MediaItemWithOwner} from '../types/DBTypes';
 import MediaRow from '../components/MediaRow';
 import {useMedia} from '../hooks/apiHooks';
 

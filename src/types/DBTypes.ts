@@ -13,6 +13,7 @@ type User = {
 };
 
 type MediaItem = {
+  map(arg0: (item: MediaItemWithOwner) => Promise<MediaItemWithOwner>): any;
   media_id: number;
   user_id: number;
   filename: string;
