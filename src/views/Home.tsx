@@ -1,28 +1,32 @@
-import {useEffect, useState} from 'react';
+import {MediaItem, MediaItemWithOwner, User} from '../types/DBTypes';
 import MediaRow from '../components/MediaRow';
-import {MediaItem, MediaItemWithOwner} from '../types/DBTypes';
+import {useEffect, useState} from 'react';
 import {fetchData} from '../lib/functions';
 
 const Home = () => {
-  const [mediaArray, setMediaArray] = useState<MediaItem[]>([]);
+  const [mediaArray, setMediaArray] = useState<MediaItemWithOwner[]>([]);
+  //console.log(mediaArray);
+
   const getMedia = async () => {
     try {
-      const data = await fetchData<MediaItem>(
+      const mediaItems = await fetchData<MediaItem[]>(
         import.meta.env.VITE_MEDIA_API + '/media',
       );
-
-      const dataWithOwner: MediaItemWithOwner = await Promise.all(
-        data.map((item) => {
-          const username = fetchData(
+      // Get usernames (file owners) for all media files from auth api
+      const itemsWithOwner: MediaItemWithOwner[] = await Promise.all(
+        mediaItems.map(async (item) => {
+          const owner = await fetchData<User>(
             import.meta.env.VITE_AUTH_API + '/users/' + item.user_id,
           );
-          const ItemWithOwner: MediaItemWithOwner = {username, ...item};
-          // TODO: fix this  !!!
+          const itemWithOwner: MediaItemWithOwner = {
+            ...item,
+            username: owner.username,
+          };
+          return itemWithOwner;
         }),
       );
-
-      setMediaArray(data);
-      console.log(data);
+      setMediaArray(itemsWithOwner);
+      console.log('mediaArray updated:', itemsWithOwner);
     } catch (error) {
       console.error('getMedia failed', error);
     }
@@ -44,6 +48,7 @@ const Home = () => {
             <th>Created</th>
             <th>Size</th>
             <th>Type</th>
+            <th>Owner</th>
           </tr>
         </thead>
         <tbody>
