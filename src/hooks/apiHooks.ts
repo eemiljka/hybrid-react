@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { MediaItem, MediaItemWithOwner, User } from "../types/DBTypes";
-import { fetchData } from "../lib/functions";
-import { Credentials } from "../types/LocalTypes";
-import { LoginResponse } from "../types/MessageTypes";
-
+import {useEffect, useState} from 'react';
+import {MediaItem, MediaItemWithOwner, User} from '../types/DBTypes';
+import {fetchData} from '../lib/functions';
+import {Credentials} from '../types/LocalTypes';
+import {LoginResponse, UserResponse} from '../types/MessageTypes';
 
 const useMedia = (): MediaItemWithOwner[] => {
   const [mediaArray, setMediaArray] = useState<MediaItemWithOwner[]>([]);
-  const getMedia = async () => {
 
+  const getMedia = async () => {
     try {
       const mediaItems = await fetchData<MediaItem[]>(
         import.meta.env.VITE_MEDIA_API + '/media',
@@ -28,7 +27,6 @@ const useMedia = (): MediaItemWithOwner[] => {
       );
       setMediaArray(itemsWithOwner);
       console.log('mediaArray updated:', itemsWithOwner);
-
     } catch (error) {
       console.error('getMedia failed', error);
     }
@@ -37,23 +35,43 @@ const useMedia = (): MediaItemWithOwner[] => {
   useEffect(() => {
     getMedia();
   }, []);
+
   return mediaArray;
 };
 
 const useUser = () => {
-  // TODO: implement network connections for auth/user server
+  const getUserByToken = async (token: string) => {
+    const options = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    };
+
+    return fetchData<UserResponse>(import.meta.env.VITE_AUTH_API + '/users/token', options);
+  };
+
+  return getUserByToken;
 };
 
 const useAuthentication = () => {
   const postLogin = async (creds: Credentials) => {
     try {
-      //TODO: fetch login response from auth server
-      return await fetchData<LoginResponse>(import.meta.env.VITE_AUTH_API + '/auth/login', {method: 'POST', body: JSON.stringify(creds)});
+      return await fetchData<LoginResponse>(
+        import.meta.env.VITE_AUTH_API + '/auth/login',
+        {
+          method: 'POST',
+          body: JSON.stringify(creds),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
     } catch (error) {
-      console.error('postLogin failed', error);
+      console.error(error);
     }
   };
-  return postLogin;
+
+  return {postLogin};
 };
 
 export {useMedia, useUser, useAuthentication};

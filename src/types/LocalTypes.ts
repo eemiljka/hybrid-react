@@ -1,3 +1,2 @@
-import { User } from './DBTypes';
-type Credentials = Pick<User, 'username' | 'password'>;
-export type { Credentials };
+import {User} from './DBTypes';
+export type Credentials = Pick<User, 'username' | 'password'>;
