@@ -40,17 +40,20 @@ const useMedia = (): MediaItemWithOwner[] => {
 };
 
 const useUser = () => {
+  // TODO: implement network functions for auth server user endpoints
   const getUserByToken = async (token: string) => {
     const options = {
       headers: {
         Authorization: 'Bearer ' + token,
       },
     };
-
-    return fetchData<UserResponse>(import.meta.env.VITE_AUTH_API + '/users/token', options);
+    return await fetchData<UserResponse>(
+      import.meta.env.VITE_AUTH_API + '/users/token/',
+      options,
+    );
   };
 
-  return getUserByToken;
+  return {getUserByToken};
 };
 
 const useAuthentication = () => {

@@ -6,6 +6,7 @@ import {Credentials} from '../types/LocalTypes';
 const LoginForm = () => {
   const {postLogin} = useAuthentication();
   const navigate = useNavigate();
+
   const initValues: Credentials = {username: '', password: ''};
 
   const doLogin = async () => {
