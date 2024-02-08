@@ -53,6 +53,24 @@ const useUser = () => {
     );
   };
 
+  const postUser = async (user: {
+    username: string;
+    password: string;
+    email: string;
+}) => {
+    const options: RequestInit = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+
+      },
+      body: JSON.stringify(user),
+    };
+    await fetchData<UserResponse>(
+      import.meta.env.VITE_AUTH_API + '/users/', options,
+    )
+  };
+
   return {getUserByToken};
 };
 
@@ -77,4 +95,4 @@ const useAuthentication = () => {
   return {postLogin};
 };
 
-export {useMedia, useUser, useAuthentication};
+export {useMedia, useUser, useAuthentication, postUser};
