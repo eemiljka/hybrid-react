@@ -1,3 +1,4 @@
+import {useUser} from '../hooks/apiHooks';
 import {useForm} from '../hooks/formHooks';
 
 const RegisterForm = () => {
@@ -5,8 +6,13 @@ const RegisterForm = () => {
 
   const initValues = {username: '', password: '', email: ''};
 
-  const doRegister = () => {
-    console.log(inputs);
+  const doRegister = async () => {
+    try {
+      console.log(inputs);
+      await postUser(inputs);
+    } catch (error) {
+      console.log((error as Error).message);
+    }
   };
 
   const {handleSubmit, handleInputChange, inputs} = useForm(
@@ -43,7 +49,7 @@ const RegisterForm = () => {
           <input
             name="email"
             type="email"
-            id="emails"
+            id="email"
             onChange={handleInputChange}
             autoComplete="email"
           />
