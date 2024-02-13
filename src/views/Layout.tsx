@@ -13,7 +13,7 @@ const Layout = () => {
       <header>
         <h1>My app</h1>
         <nav>
-          <ul>
+          <ul className=" flex justify-end">
             <li>
               <Link to="/">Home</Link>
             </li>
