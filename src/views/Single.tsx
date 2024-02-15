@@ -1,5 +1,6 @@
 import {NavigateFunction, useLocation, useNavigate} from 'react-router-dom';
 import {MediaItemWithOwner} from '../types/DBTypes';
+import Likes from '../components/Likes';
 import Comments from '../components/Comments';
 
 const Single = () => {
@@ -16,6 +17,7 @@ const Single = () => {
       ) : (
         <img src={item.filename} alt={item.title} />
       )}
+      <Likes item={item} />
       <p>{item.description}</p>
       <p>
         Uploaded at: {new Date(item.created_at).toLocaleString('fi-FI')}, by:{' '}
