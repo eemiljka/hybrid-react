@@ -11,7 +11,7 @@ const Layout = () => {
   return (
     <>
       <header>
-        <h1>My app</h1>
+        <h1 className="p-4 text-4xl">My app</h1>
         <nav>
           <ul className="flex justify-end bg-slate-950">
             <li>
@@ -62,11 +62,11 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <main>
+      <main className="p-4">
         <Outlet />
       </main>
-      <footer>
-        <p>Copyright 2024 - NN</p>
+      <footer className="flex justify-end bg-slate-950 p-4">
+        <p>Copyright 2024 - EK</p>
       </footer>
     </>
   );

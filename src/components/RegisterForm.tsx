@@ -32,10 +32,8 @@ const RegisterForm = () => {
     setUsernameAvailable(result.available);
   };
 
-  const handleEmailBlur = async (
-    event: React.SyntheticEvent<HTMLInputElement>,
-  ) => {
-    const result = await getEmailAvailable(event.currentTarget.value);
+  const handleEmailBlur = async () => {
+    const result = await getEmailAvailable(inputs.email); // voidaan käyttää myös inputs objektia
     setEmailAvailable(result.available);
   };
 
