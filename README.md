@@ -1,6 +1,10 @@
 # React app
 
-Open [this link in browser](https://users.metropolia.fi/~eemiljka/react-routing/) to see the app in action
+Open [this link in browser](https://users.metropolia.fi/~eemiljka/react-2/) to see the app in action
+
+Or
+
+Download / clone this current repository and [this repository](https://github.com/eemiljka/hybridisovellukset/tree/auth) then run all the servers and open the app in browser.
 
 # React + TypeScript + Vite
 
