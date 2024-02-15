@@ -1,10 +1,6 @@
 # React app
 
-Open [this link in browser](https://users.metropolia.fi/~eemiljka/react-2/) to see the app in action
-
-Or
-
-Download / clone this current repository and [this repository](https://github.com/eemiljka/hybridisovellukset/tree/auth) then run all the servers and open the app in browser.
+Open [this link in browser](https://users.metropolia.fi/~eemiljka/zustand/) to see the app in action.
 
 # React + TypeScript + Vite
 
