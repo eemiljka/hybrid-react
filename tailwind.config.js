@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        platinum: '#E0E1DD',
-        silverblue: '#778DA9',
-        blue: '#415A77',
-        darkblue: '#1B263B',
-        black: '#0D1B2A',
+        platinum: '#1F2421',
+        silverblue: '#546A7B',
+        blue: '#62929E',
+        darkblue: '#216869',
+        black: '#1F2421',
       },
       backgroundImage: () => ({
         'custom-bg':

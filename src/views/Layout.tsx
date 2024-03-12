@@ -19,7 +19,7 @@ const Layout = () => {
   return (
     <>
       <header>
-        <nav>
+        <nav className="fixed top-0 z-50 w-full">
           <ul className="flex justify-end bg-blue">
             <li>
               <Link
@@ -69,7 +69,7 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <main className="bg-silverblue p-4">
+      <main className="bg-silverblue p-4 pt-20">
         <Outlet />
       </main>
       <footer className="flex justify-end bg-silverblue p-4">
