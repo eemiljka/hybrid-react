@@ -1,6 +1,6 @@
 # React app
 
-Open [this link in browser](https://users.metropolia.fi/~eemiljka/react-routing/) to see the app in action
+Open [this link in browser](https://users.metropolia.fi/~eemiljka/react-graphql/) to see the app in action.
 
 # React + TypeScript + Vite
 

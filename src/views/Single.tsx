@@ -1,11 +1,13 @@
 import {NavigateFunction, useLocation, useNavigate} from 'react-router-dom';
-import {MediaItem} from '../types/DBTypes';
+import {MediaItemWithOwner} from '../types/DBTypes';
+import Likes from '../components/Likes';
+import Comments from '../components/Comments';
 
 const Single = () => {
   const {state} = useLocation();
   const navigate: NavigateFunction = useNavigate();
   //console.log('single state', state);
-  const item: MediaItem = state;
+  const item: MediaItemWithOwner = state;
 
   return (
     <>
@@ -15,8 +17,12 @@ const Single = () => {
       ) : (
         <img src={item.filename} alt={item.title} />
       )}
+      <Likes item={item} />
       <p>{item.description}</p>
-      <p>{new Date(item.created_at).toLocaleString('fi-FI')}</p>
+      <p>
+        Uploaded at: {new Date(item.created_at).toLocaleString('fi-FI')}, by:{' '}
+        {item.username}{' '}
+      </p>
       <p>{item.filesize}</p>
       <p>{item.media_type}</p>
       <button
@@ -26,6 +32,7 @@ const Single = () => {
       >
         go back
       </button>
+      <Comments item={item} />
     </>
   );
 };
