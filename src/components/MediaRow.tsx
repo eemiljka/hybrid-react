@@ -28,56 +28,40 @@ const MediaRow = (props: {item: MediaItemWithOwner}) => {
   };
 
   return (
-    <tr className="*:p-4">
-      <td className="flex items-center justify-center border border-slate-700">
-        <img
-          className="h-60 w-72 object-cover"
-          src={item.thumbnail}
-          alt={item.title}
-        />
-      </td>
-      <td className="border border-slate-700">{item.title}</td>
-      <td className="text-ellipsis border border-slate-700">
-        {item.description}
-      </td>
-      <td className="border border-slate-700">
-        {new Date(item.created_at).toLocaleString('fi-FI')}
-      </td>
-      <td className="border border-slate-700">{item.filesize}</td>
-      <td className="border border-slate-700">
-        {item.media_type.replace('&#x2F;', '/')}
-      </td>
-      <td className="border border-slate-700">{item.owner.username}</td>
-      <td className="border border-slate-700">
-        <div className="flex flex-col">
-          <Link
-            className="bg-slate-600 p-2 text-center hover:bg-slate-950"
-            to="/single"
-            state={item}
+    <Link to="/single" state={item}>
+      <div className="mb-10 border-2 border-transparent text-center transition-all duration-500 ease-in-out hover:rounded-lg hover:border-platinum">
+        <p className="text-platinum">{item.owner.username}</p>
+        <div className="flex items-center justify-center">
+          <img
+            className="h-60 w-72 object-cover"
+            src={item.thumbnail}
+            alt={item.title}
+          />
+        </div>
+        <p className="text-ellipsis text-platinum">{item.description}</p>
+        <div className="flex justify-center space-x-2">
+          <button
+            className="rounded bg-blue px-4 py-2 text-white hover:bg-black"
+            onClick={() => console.log('modify', item)}
           >
-            View
-          </Link>
+            Modify
+          </button>
           {user &&
             (user.user_id === item.user_id || user.level_name === 'Admin') && (
-              <>
-                <button
-                  className="bg-slate-700 p-2 hover:bg-slate-950"
-                  onClick={() => console.log('modify', item)}
-                >
-                  Modify
-                </button>
-                <button
-                  className="bg-slate-800 p-2 hover:bg-slate-950"
-                  onClick={deleteHandler}
-                >
-                  Delete
-                </button>
-              </>
+              <button
+                className="rounded bg-blue px-4 py-2 text-white hover:bg-black"
+                onClick={deleteHandler}
+              >
+                Delete
+              </button>
             )}
         </div>
         <p>Comments: {item.comments_count}</p>
-      </td>
-    </tr>
+        <p className="text-platinum">
+          {new Date(item.created_at).toLocaleString('fi-FI')}
+        </p>
+      </div>
+    </Link>
   );
 };
 

@@ -11,12 +11,11 @@ const Layout = () => {
   return (
     <>
       <header>
-        <h1 className="p-4 text-4xl">My app</h1>
         <nav>
-          <ul className="flex justify-end bg-slate-950">
+          <ul className="flex justify-end bg-blue">
             <li>
               <Link
-                className="block p-4 text-center text-slate-50 hover:bg-slate-700"
+                className="block p-4 text-platinum hover:bg-darkblue"
                 to="/"
               >
                 Home
@@ -26,7 +25,7 @@ const Layout = () => {
               <>
                 <li>
                   <Link
-                    className="block p-4 text-center text-slate-50 hover:bg-slate-700"
+                    className="block p-4 text-center text-platinum hover:bg-darkblue"
                     to="/profile"
                   >
                     Profile
@@ -34,7 +33,7 @@ const Layout = () => {
                 </li>
                 <li>
                   <Link
-                    className="block p-4 text-center text-slate-50 hover:bg-slate-700"
+                    className="block p-4 text-center text-platinum hover:bg-darkblue"
                     to="/upload"
                   >
                     Upload
@@ -42,7 +41,7 @@ const Layout = () => {
                 </li>
                 <li>
                   <Link
-                    className="block p-4 text-center text-slate-50 hover:bg-slate-700"
+                    className="block p-4 text-center text-platinum hover:bg-darkblue"
                     to="/logout"
                   >
                     Logout
@@ -52,7 +51,7 @@ const Layout = () => {
             ) : (
               <li>
                 <Link
-                  className="block p-4 text-center text-slate-50 hover:bg-slate-700"
+                  className="block p-4 text-center text-platinum hover:bg-darkblue"
                   to="/login"
                 >
                   Login
@@ -62,10 +61,10 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <main className="p-4">
+      <main className="bg-silverblue p-4">
         <Outlet />
       </main>
-      <footer className="flex justify-end bg-slate-950 p-4">
+      <footer className="flex justify-end bg-silverblue p-4">
         <p>Copyright 2024 - E.K.</p>
       </footer>
     </>
