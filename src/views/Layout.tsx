@@ -1,5 +1,13 @@
 import {Link, Outlet} from 'react-router-dom';
 import {useUserContext} from '../hooks/ContextHooks';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {
+  faHome,
+  faUser,
+  faUpload,
+  faSignOutAlt,
+  faSignInAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Layout = () => {
   const {user, handleAutoLogin} = useUserContext();
@@ -18,7 +26,7 @@ const Layout = () => {
                 className="block p-4 text-platinum hover:bg-darkblue"
                 to="/"
               >
-                Home
+                <FontAwesomeIcon icon={faHome} />
               </Link>
             </li>
             {user ? (
@@ -28,7 +36,7 @@ const Layout = () => {
                     className="block p-4 text-center text-platinum hover:bg-darkblue"
                     to="/profile"
                   >
-                    Profile
+                    <FontAwesomeIcon icon={faUser} />
                   </Link>
                 </li>
                 <li>
@@ -36,7 +44,7 @@ const Layout = () => {
                     className="block p-4 text-center text-platinum hover:bg-darkblue"
                     to="/upload"
                   >
-                    Upload
+                    <FontAwesomeIcon icon={faUpload} />
                   </Link>
                 </li>
                 <li>
@@ -44,7 +52,7 @@ const Layout = () => {
                     className="block p-4 text-center text-platinum hover:bg-darkblue"
                     to="/logout"
                   >
-                    Logout
+                    <FontAwesomeIcon icon={faSignOutAlt} />
                   </Link>
                 </li>
               </>
@@ -54,7 +62,7 @@ const Layout = () => {
                   className="block p-4 text-center text-platinum hover:bg-darkblue"
                   to="/login"
                 >
-                  Login
+                  <FontAwesomeIcon icon={faSignInAlt} />
                 </Link>
               </li>
             )}
