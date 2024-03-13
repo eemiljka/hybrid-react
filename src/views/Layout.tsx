@@ -20,10 +20,10 @@ const Layout = () => {
     <>
       <header>
         <nav className="fixed top-0 z-50 w-full">
-          <ul className="flex justify-end bg-blue">
+          <ul className="bg-gunmetal flex justify-end">
             <li>
               <Link
-                className="block p-4 text-platinum hover:bg-darkblue"
+                className="hover:bg-cerulean text-columbia block p-4"
                 to="/"
               >
                 <FontAwesomeIcon icon={faHome} />
@@ -33,7 +33,7 @@ const Layout = () => {
               <>
                 <li>
                   <Link
-                    className="block p-4 text-center text-platinum hover:bg-darkblue"
+                    className="text-columbia hover:bg-cerulean block p-4 text-center"
                     to="/profile"
                   >
                     <FontAwesomeIcon icon={faUser} />
@@ -41,7 +41,7 @@ const Layout = () => {
                 </li>
                 <li>
                   <Link
-                    className="block p-4 text-center text-platinum hover:bg-darkblue"
+                    className="text-columbia hover:bg-cerulean block p-4 text-center"
                     to="/upload"
                   >
                     <FontAwesomeIcon icon={faUpload} />
@@ -49,7 +49,7 @@ const Layout = () => {
                 </li>
                 <li>
                   <Link
-                    className="block p-4 text-center text-platinum hover:bg-darkblue"
+                    className="text-columbia hover:bg-cerulean block p-4 text-center"
                     to="/logout"
                   >
                     <FontAwesomeIcon icon={faSignOutAlt} />
@@ -59,7 +59,7 @@ const Layout = () => {
             ) : (
               <li>
                 <Link
-                  className="block p-4 text-center text-platinum hover:bg-darkblue"
+                  className="text-columbia hover:bg-cerulean block p-4 text-center"
                   to="/login"
                 >
                   <FontAwesomeIcon icon={faSignInAlt} />
@@ -69,7 +69,7 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <main className="bg-silverblue p-4 pt-20">
+      <main className="bg-columbia p-4 pt-20">
         <Outlet />
       </main>
       <footer className="flex justify-end bg-silverblue p-4">
