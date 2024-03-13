@@ -7,12 +7,11 @@ const Home = () => {
 
   return (
     <>
-      <h2>Feed</h2>
-      <tbody>
+      <div>
         {mediaArray.map((item) => (
           <MediaRow key={item.media_id} item={item} />
         ))}
-      </tbody>
+      </div>
     </>
   );
 };

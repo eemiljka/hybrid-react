@@ -2,6 +2,13 @@ import {Link} from 'react-router-dom';
 import {MediaItemWithOwner} from '../types/DBTypes';
 import {useUpdateContext, useUserContext} from '../hooks/ContextHooks';
 import {useMedia} from '../hooks/graphQLHooks';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faComments, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
+import {
+  differenceInHours,
+  differenceInMinutes,
+  differenceInBusinessDays,
+} from 'date-fns';
 
 const MediaRow = (props: {item: MediaItemWithOwner}) => {
   const {item} = props;
@@ -27,41 +34,61 @@ const MediaRow = (props: {item: MediaItemWithOwner}) => {
     }
   };
 
+  const getTimeDifference = (date: Date) => {
+    const now = new Date();
+    const diffInHours = differenceInHours(now, date);
+    const diffInMinutes = differenceInMinutes(now, date);
+    const diffInBusinessDays = differenceInBusinessDays(now, date);
+    if (diffInBusinessDays > 0) {
+      return `${diffInBusinessDays} days ago`;
+    }
+    if (diffInHours > 0) {
+      return `${diffInHours} hours ago`;
+    }
+    return `${diffInMinutes} minutes ago`;
+  };
+
   return (
-    <Link to="/single" state={item}>
-      <div className="mb-10 border-2 border-transparent text-center transition-all duration-500 ease-in-out hover:rounded-lg hover:border-platinum">
-        <p className="text-platinum">{item.owner.username}</p>
-        <div className="flex items-center justify-center">
-          <img
-            className="h-60 w-72 object-cover"
-            src={item.thumbnail}
-            alt={item.title}
-          />
+    <div className="flex justify-center">
+      <Link to="/single" state={item}>
+        <div className="mb-20 w-96 border-2 border-transparent text-center transition-all duration-500 ease-in-out hover:rounded-lg hover:shadow-2xl">
+          <p className="text-gunmetal">@{item.owner.username}</p>
+          <div className="flex items-center justify-center">
+            <img
+              className="h-80 w-80 object-cover"
+              src={item.thumbnail}
+              alt={item.title}
+            />
+          </div>
+          <p className="text-gunmetal text-ellipsis">{item.description}</p>
+          <div className="flex justify-center space-x-2">
+            <button
+              className="bg-cerulean text-columbia hover:bg-gunmetal rounded px-4 py-2"
+              onClick={() => console.log('modify', item)}
+            >
+              Modify
+            </button>
+            {user &&
+              (user.user_id === item.user_id ||
+                user.level_name === 'Admin') && (
+                <button
+                  className="bg-cerulean text-columbia hover:bg-gunmetal rounded px-4 py-2"
+                  onClick={deleteHandler}
+                >
+                  Delete
+                </button>
+              )}
+          </div>
+          <p className="text-gunmetal">
+            <FontAwesomeIcon icon={faComments} /> {item.comments_count}
+          </p>
+          <p className="text-gunmetal">
+            <FontAwesomeIcon icon={faCalendarAlt} />{' '}
+            {getTimeDifference(new Date(item.created_at))}
+          </p>
         </div>
-        <p className="text-ellipsis text-platinum">{item.description}</p>
-        <div className="flex justify-center space-x-2">
-          <button
-            className="rounded bg-blue px-4 py-2 text-white hover:bg-black"
-            onClick={() => console.log('modify', item)}
-          >
-            Modify
-          </button>
-          {user &&
-            (user.user_id === item.user_id || user.level_name === 'Admin') && (
-              <button
-                className="rounded bg-blue px-4 py-2 text-white hover:bg-black"
-                onClick={deleteHandler}
-              >
-                Delete
-              </button>
-            )}
-        </div>
-        <p>Comments: {item.comments_count}</p>
-        <p className="text-platinum">
-          {new Date(item.created_at).toLocaleString('fi-FI')}
-        </p>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
