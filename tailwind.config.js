@@ -10,9 +10,11 @@ export default {
         cerulean: '#1282A2',
         pistachio: '#BCD979',
       },
+
+      // BACKGROUND IMAGE CUSTOM (not used at the moment)
       backgroundImage: () => ({
         'custom-bg':
-          'url(https://images.pexels.com/photos/1154504/pexels-photo-1154504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+          'url(https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
       }),
       backgroundSize: {
         'size-contain': 'contain',
