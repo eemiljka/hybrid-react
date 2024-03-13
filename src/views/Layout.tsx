@@ -2,7 +2,6 @@ import {Link, Outlet} from 'react-router-dom';
 import {useUserContext} from '../hooks/ContextHooks';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
-  faHome,
   faUser,
   faUpload,
   faSignOutAlt,
@@ -19,53 +18,56 @@ const Layout = () => {
   return (
     <>
       <header>
-        <nav className="fixed top-0 z-50 w-full">
-          <ul className="bg-gunmetal flex justify-end">
-            <li>
+        <nav className="fixed top-0 z-50 h-16 w-full">
+          <ul className="bg-gunmetal grid h-full grid-cols-3 items-center">
+            <div></div> {/* This empty div is used to balance the space */}
+            <li className="justify-self-center">
               <Link
-                className="hover:bg-cerulean text-columbia block p-4"
+                className="text-columbia block p-4 text-center text-2xl font-bold"
                 to="/"
               >
-                <FontAwesomeIcon icon={faHome} />
+                postIT
               </Link>
             </li>
-            {user ? (
-              <>
+            <div className="flex space-x-4 justify-self-end">
+              {user ? (
+                <>
+                  <li>
+                    <Link
+                      className="text-columbia hover:bg-cerulean block p-4 text-center"
+                      to="/profile"
+                    >
+                      <FontAwesomeIcon icon={faUser} />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="text-columbia hover:bg-cerulean block p-4 text-center"
+                      to="/upload"
+                    >
+                      <FontAwesomeIcon icon={faUpload} />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="text-columbia hover:bg-cerulean block p-4 text-center"
+                      to="/logout"
+                    >
+                      <FontAwesomeIcon icon={faSignOutAlt} />
+                    </Link>
+                  </li>
+                </>
+              ) : (
                 <li>
                   <Link
                     className="text-columbia hover:bg-cerulean block p-4 text-center"
-                    to="/profile"
+                    to="/login"
                   >
-                    <FontAwesomeIcon icon={faUser} />
+                    <FontAwesomeIcon icon={faSignInAlt} />
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    className="text-columbia hover:bg-cerulean block p-4 text-center"
-                    to="/upload"
-                  >
-                    <FontAwesomeIcon icon={faUpload} />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-columbia hover:bg-cerulean block p-4 text-center"
-                    to="/logout"
-                  >
-                    <FontAwesomeIcon icon={faSignOutAlt} />
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <li>
-                <Link
-                  className="text-columbia hover:bg-cerulean block p-4 text-center"
-                  to="/login"
-                >
-                  <FontAwesomeIcon icon={faSignInAlt} />
-                </Link>
-              </li>
-            )}
+              )}
+            </div>
           </ul>
         </nav>
       </header>

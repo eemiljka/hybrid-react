@@ -51,11 +51,11 @@ const MediaRow = (props: {item: MediaItemWithOwner}) => {
   return (
     <div className="flex justify-center">
       <Link to="/single" state={item}>
-        <div className="hover:border-gunmetal mb-10 border-2 border-transparent text-center transition-all duration-500 ease-in-out hover:rounded-lg">
+        <div className="mb-20 w-96 border-2 border-transparent text-center transition-all duration-500 ease-in-out hover:rounded-lg hover:shadow-2xl">
           <p className="text-gunmetal">@{item.owner.username}</p>
           <div className="flex items-center justify-center">
             <img
-              className="h-60 w-72 object-cover"
+              className="h-80 w-80 object-cover"
               src={item.thumbnail}
               alt={item.title}
             />
