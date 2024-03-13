@@ -46,9 +46,13 @@ const useMedia = () => {
     `;
 
       const result = await makeQuery<
-        GraphQLResponse<{mediaItems: MediaItemWithOwner[]}>,
-        undefined
+        GraphQLResponse<{mediaItems: MediaItemWithOwner[]}>, undefined
       >(query);
+
+      //SORTING THE MEDIA ITEMS BT "created_at" IN DESCENDING ORDER
+      result.data.mediaItems.sort((a, b) => {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      });
       setMediaArray(result.data.mediaItems);
     } catch (error) {
       console.error('getMedia failed', error);
