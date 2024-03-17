@@ -17,10 +17,10 @@ const LoginForm = () => {
   );
 
   return (
-    <>
-      <h3 className="text-3xl">Login</h3>
+    <div className="mx-auto mt-10 w-4/5 rounded-md bg-slate-800 p-6 text-slate-100">
+      <h3 className="mb-6 text-center text-3xl">Login</h3>
       <form onSubmit={handleSubmit}>
-        <div className="flex w-4/5">
+        <div className="mb-3 flex w-full">
           <label className="w-1/3 p-6 text-end" htmlFor="UserWithLevelname">
             Username
           </label>
@@ -33,7 +33,7 @@ const LoginForm = () => {
             autoComplete="username"
           />
         </div>
-        <div className="flex w-4/5">
+        <div className="mb-3 flex w-full">
           <label className="w-1/3 p-6 text-end" htmlFor="loginpassword">
             Password
           </label>
@@ -46,16 +46,16 @@ const LoginForm = () => {
             autoComplete="current-password"
           />
         </div>
-        <div className="flex w-4/5 justify-end">
+        <div className="flex w-full justify-end">
           <button
-            className="m-3 w-1/3 rounded-md bg-slate-700 p-3"
+            className="m-3 w-1/3 rounded-md bg-cerulean px-4 py-2 text-columbia hover:bg-gunmetal"
             type="submit"
           >
             Login
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

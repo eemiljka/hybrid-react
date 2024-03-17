@@ -1,5 +1,4 @@
 import {useState} from 'react';
-// import {useUser} from '../hooks/apiHooks';
 import {useUser} from '../hooks/graphQLHooks';
 import {useForm} from '../hooks/formHooks';
 
@@ -34,16 +33,15 @@ const RegisterForm = () => {
   };
 
   const handleEmailBlur = async () => {
-    const result = await getEmailAvailable(inputs.email); // voidaan käyttää myös inputs objektia
+    const result = await getEmailAvailable(inputs.email);
     setEmailAvailable(result.available);
   };
 
-  console.log(usernameAvailable, emailAvailable);
   return (
-    <>
-      <h3 className="text-3xl">Register</h3>
+    <div className="mx-auto mt-10 w-4/5 rounded-md bg-gunmetal p-6 text-slate-100">
+      <h3 className="mb-6 text-center text-3xl">Register</h3>
       <form onSubmit={handleSubmit} className="flex flex-col text-center">
-        <div className="flex w-4/5">
+        <div className="mb-3 flex w-full">
           <label className="w-1/3 p-6 text-end" htmlFor="username">
             Username
           </label>
@@ -58,11 +56,11 @@ const RegisterForm = () => {
           />
         </div>
         {!usernameAvailable && (
-          <div className="flex w-4/5 justify-end pr-4">
+          <div className="flex w-full justify-end pr-4">
             <p className="text-red-500">Username not available</p>
           </div>
         )}
-        <div className="flex w-4/5">
+        <div className="mb-3 flex w-full">
           <label className="w-1/3 p-6 text-end" htmlFor="password">
             Password
           </label>
@@ -75,7 +73,7 @@ const RegisterForm = () => {
             autoComplete="current-password"
           />
         </div>
-        <div className="flex w-4/5">
+        <div className="mb-3 flex w-full">
           <label className="w-1/3 p-6 text-end" htmlFor="email">
             Email
           </label>
@@ -90,20 +88,20 @@ const RegisterForm = () => {
           />
         </div>
         {!emailAvailable && (
-          <div className="flex w-4/5 justify-end pr-4">
+          <div className="flex w-full justify-end pr-4">
             <p className="text-red-500">Email not available</p>
           </div>
         )}
-        <div className="flex w-4/5 justify-end">
+        <div className="flex w-full justify-end">
           <button
-            className="m-3 w-1/3 rounded-md bg-slate-700 p-3"
+            className="text-columbian m-3 w-1/3 rounded-md bg-cerulean px-4 py-2 hover:bg-lion"
             type="submit"
           >
             Register
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

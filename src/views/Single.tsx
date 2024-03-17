@@ -6,34 +6,33 @@ import Comments from '../components/Comments';
 const Single = () => {
   const {state} = useLocation();
   const navigate: NavigateFunction = useNavigate();
-  //console.log('single state', state);
   const item: MediaItemWithOwner = state;
 
   return (
-    <>
-      <h3>{item.title}</h3>
-      {item.media_type.includes('video') ? (
-        <video controls src={item.filename}></video>
-      ) : (
-        <img src={item.filename} alt={item.title} />
-      )}
+    <div className="flex flex-col items-center text-gunmetal">
+      <h3 className="mb-4 text-2xl font-bold">{item.title}</h3>
+      <div className="mx-auto max-w-md">
+        {item.media_type.includes('video') ? (
+          <video controls src={item.filename} className="w-full" />
+        ) : (
+          <img src={item.filename} alt={item.title} className="w-full" />
+        )}
+      </div>
+      <p className="mt-4">{item.description}</p>
       <Likes item={item} />
-      <p>{item.description}</p>
-      <p>
+      <Comments item={item} />
+      <p className="mt-4">
         Uploaded at: {new Date(item.created_at).toLocaleString('fi-FI')}, by:{' '}
         {item.username}{' '}
       </p>
       <p>{item.filesize}</p>
-      <p>{item.media_type}</p>
       <button
-        onClick={() => {
-          navigate(-1);
-        }}
+        className="mt-4 rounded bg-cerulean px-4 py-2 text-columbia hover:bg-gunmetal"
+        onClick={() => navigate(-1)}
       >
         go back
       </button>
-      <Comments item={item} />
-    </>
+    </div>
   );
 };
 

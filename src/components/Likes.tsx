@@ -2,6 +2,7 @@ import {useEffect, useReducer} from 'react';
 import {Like, MediaItemWithOwner} from '../types/DBTypes';
 // import {useLike} from '../hooks/apiHooks';
 import {useLike} from '../hooks/graphQLHooks';
+import {FaHeart, FaHeartBroken} from 'react-icons/fa';
 
 type LikeState = {
   count: number;
@@ -99,11 +100,16 @@ const Likes = ({item}: {item: MediaItemWithOwner}) => {
 
   return (
     <>
-      Like count: {likeState.count}
+      Likes: {likeState.count}
       <button
-        className="bg-slate-700 p-2 hover:bg-slate-950"
+        className="flex items-center justify-center rounded bg-cerulean px-4 py-2 text-columbia hover:bg-gunmetal"
         onClick={handleLike}
       >
+        {likeState.userLike ? (
+          <FaHeartBroken className="mr-2" />
+        ) : (
+          <FaHeart className="mr-2" />
+        )}
         {likeState.userLike ? 'Unlike' : 'Like'}
       </button>
     </>
