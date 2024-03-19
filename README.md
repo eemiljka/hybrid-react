@@ -35,3 +35,25 @@ Open [this link in browser](https://users.metropolia.fi/~eemiljka/postit/) to se
 ## Upload 2
 
 ![Upload-2](screenshots/upload-2.png)
+
+# Functionalities
+
+## Registering
+
+User is able to make a user by filling a form.
+
+## Logging in
+
+User is able to log in with an existing user by filling a form.
+
+## Uploading
+
+Once logged in, a user can upload an image or video with a "title" and a "description".
+
+## Liking
+
+Once logged in, a user can like posts on the timeline. This will add one count to the "like count".
+
+## Commenting
+
+Once logged in, a user can comment on a post for everyone to see. Everyone will also be able to see how long ago the comment was made.
