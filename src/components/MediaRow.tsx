@@ -60,23 +60,25 @@ const MediaRow = (props: {item: MediaItemWithOwner}) => {
               alt={item.title}
             />
           </div>
-          <p className="text-gunmetal text-ellipsis">{item.description}</p>
+          <p className="text-ellipsis text-gunmetal">{item.description}</p>
           <div className="flex justify-center space-x-2">
-            <button
-              className="bg-cerulean text-columbia hover:bg-gunmetal rounded px-4 py-2"
-              onClick={() => console.log('modify', item)}
-            >
-              Modify
-            </button>
             {user &&
               (user.user_id === item.user_id ||
                 user.level_name === 'Admin') && (
-                <button
-                  className="bg-cerulean text-columbia hover:bg-gunmetal rounded px-4 py-2"
-                  onClick={deleteHandler}
-                >
-                  Delete
-                </button>
+                <>
+                  <button
+                    className="rounded bg-cerulean px-4 py-2 text-columbia hover:bg-gunmetal"
+                    onClick={() => console.log('modify', item)}
+                  >
+                    Modify
+                  </button>
+                  <button
+                    className="rounded bg-cerulean px-4 py-2 text-columbia hover:bg-gunmetal"
+                    onClick={deleteHandler}
+                  >
+                    Delete
+                  </button>
+                </>
               )}
           </div>
           <p className="text-gunmetal">

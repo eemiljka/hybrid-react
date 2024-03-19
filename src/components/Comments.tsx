@@ -4,7 +4,7 @@ import {useForm} from '../hooks/formHooks';
 import {useCommentStore} from '../store';
 import {MediaItemWithOwner} from '../types/DBTypes';
 import {useComment} from '../hooks/graphQLHooks';
-// import {useComment} from '../hooks/apiHooks';
+import {formatDistanceToNow} from 'date-fns';
 
 const Comments = ({item}: {item: MediaItemWithOwner}) => {
   const {comments, setComments} = useCommentStore();
@@ -22,7 +22,6 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
     try {
       await postComment(inputs.comment_text, parseInt(item.media_id), token);
       await getComments();
-      // resetoi lomake
       if (formRef.current) {
         formRef.current.reset();
       }
@@ -50,8 +49,33 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
     getComments();
   }, []);
 
+  // Reverse the comments array to display newest comments at the top
+  const reversedComments = [...comments].reverse();
+
   return (
     <>
+      {reversedComments.length > 0 && (
+        <>
+          <h3 className="text-xl">Comments</h3>
+          <ul>
+            {reversedComments.map((comment) => (
+              <li key={comment.comment_id}>
+                <div className="rounded-md border border-slate-200 bg-slate-800 p-3 text-slate-100">
+                  <span className="font-bold text-slate-200">
+                    {formatDistanceToNow(new Date(comment.created_at!), {
+                      addSuffix: true,
+                    })}{' '}
+                  </span>
+                  <span className="font-bold text-slate-200">
+                    {comment.username} wrote:
+                  </span>
+                  <span className="ml-2">{comment.comment_text}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
       {user && (
         <>
           <form
@@ -76,27 +100,6 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
               Post
             </button>
           </form>
-        </>
-      )}
-      {comments.length > 0 && (
-        <>
-          <h3 className="text-xl">Comments</h3>
-          <ul>
-            {comments.map((comment) => (
-              <li key={comment.comment_id}>
-                <div className="rounded-md border border-slate-200 bg-slate-800 p-3 text-slate-100">
-                  <span className="font-bold text-slate-200">
-                    On{' '}
-                    {new Date(comment.created_at!).toLocaleDateString('fi-FI')}{' '}
-                  </span>
-                  <span className="font-bold text-slate-200">
-                    {comment.username} wrote:
-                  </span>
-                  <span className="ml-2">{comment.comment_text}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
         </>
       )}
     </>
