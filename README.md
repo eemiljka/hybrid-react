@@ -36,6 +36,10 @@ Open [this link in browser](https://users.metropolia.fi/~eemiljka/postit/) to se
 
 ![Upload-2](screenshots/upload-2.png)
 
+# API
+
+Teacher's API.
+
 # Functionalities
 
 ## Registering
@@ -70,15 +74,15 @@ Posts are displayed in order from top to bottom, from latest to oldest.
 
 ## Comment order
 
-Posts are displayed in order from top to bottom, from latest to oldest.
+Comments are displayed in order from top to bottom, from latest to oldest.
 
 ## Post upload time
 
-Posts' upload time is displayed in a form of: "... hours ago" or "... days ago".
+Posts' upload time is displayed in a form of: "... hours ago" or "... days ago" etc...
 
 ## Comment creation time
 
-Comments' commenting time is displayed in a form of: "... hours ago" or "... days ago".
+Comments' commenting time is displayed in a form of: "... hours ago" or "... days ago" etc...
 
 # Problems
 
