@@ -57,3 +57,35 @@ Once logged in, a user can like posts on the timeline. This will add one count t
 ## Commenting
 
 Once logged in, a user can comment on a post for everyone to see. Everyone will also be able to see how long ago the comment was made.
+
+## Logging out
+
+Once logged in, user can log out.
+
+# Additional features
+
+## Post order
+
+Posts are displayed in order from top to bottom, from latest to oldest.
+
+## Comment order
+
+Posts are displayed in order from top to bottom, from latest to oldest.
+
+## Post upload time
+
+Posts' upload time is displayed in a form of: "... hours ago" or "... days ago".
+
+## Comment creation time
+
+Comments' commenting time is displayed in a form of: "... hours ago" or "... days ago".
+
+# Problems
+
+## Modifying problem
+
+Despite being able to click a "modify" -button on your own post, you can't modify it.
+
+## Button visibility
+
+Despite being logged in, you sometimes have to log in again to see the "modify" and "delete" -buttons on your own post.
