@@ -4,7 +4,7 @@ Open [this link in browser](https://users.metropolia.fi/~eemiljka/postit/) to se
 
 # SCREENSHOTS
 
-## Home screen
+## Home screen (not logged in)
 
 ![Home](screenshots/home.png)
 
