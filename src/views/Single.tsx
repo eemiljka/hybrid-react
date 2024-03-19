@@ -2,6 +2,7 @@ import {NavigateFunction, useLocation, useNavigate} from 'react-router-dom';
 import {MediaItemWithOwner} from '../types/DBTypes';
 import Likes from '../components/Likes';
 import Comments from '../components/Comments';
+import {formatDistanceToNow} from 'date-fns';
 
 const Single = () => {
   const {state} = useLocation();
@@ -22,10 +23,10 @@ const Single = () => {
       <Likes item={item} />
       <Comments item={item} />
       <p className="mt-4">
-        Uploaded at: {new Date(item.created_at).toLocaleString('fi-FI')}, by:{' '}
-        {item.username}{' '}
+        Uploaded:{' '}
+        {formatDistanceToNow(new Date(item.created_at), {addSuffix: true})} by @
+        {item.owner.username}{' '}
       </p>
-      <p>{item.filesize}</p>
       <button
         className="mt-4 rounded bg-cerulean px-4 py-2 text-columbia hover:bg-gunmetal"
         onClick={() => navigate(-1)}

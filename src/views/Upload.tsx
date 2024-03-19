@@ -1,10 +1,8 @@
 import {useState} from 'react';
 import {useForm} from '../hooks/formHooks';
-// import {useFile, useMedia} from '../hooks/apiHooks';
 import {useFile, useMedia} from '../hooks/graphQLHooks';
 import {useNavigate} from 'react-router-dom';
 
-// Upload.tsx
 const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
   const {postFile} = useFile();
@@ -22,12 +20,9 @@ const Upload = () => {
       if (!token || !file) {
         return;
       }
-      // TODO: call postFile function (see below)
       const fileResult = await postFile(file, token);
-      // TODO: call postMedia function (see below)
       const mediaResult = await postMedia(fileResult, inputs, token);
       alert(mediaResult.message);
-      // TODO: redirect to Home
       navigate('/');
     } catch (e) {
       console.log((e as Error).message);
@@ -46,8 +41,8 @@ const Upload = () => {
   );
 
   return (
-    <>
-      <h1 className="text-3xl">Upload</h1>
+    <div className="text-columbian mx-auto mt-10 w-4/5 rounded-md bg-gunmetal p-6">
+      <h2 className="mb-6 text-2xl">Upload</h2>
       <form onSubmit={handleSubmit}>
         <div className="flex w-4/5">
           <label className="w-1/3 p-6 text-end" htmlFor="title">
@@ -108,7 +103,7 @@ const Upload = () => {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
