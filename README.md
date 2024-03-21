@@ -90,3 +90,6 @@ Despite being able to click a "modify" -button on your own post, you can't modif
 ## Button visibility
 
 Despite being logged in, you sometimes have to log in again to see the "modify" and "delete" -buttons on your own post.
+
+## Problem fetching posts and data
+Open one of teacher's links to fix this. Also use metropolia VPN.
