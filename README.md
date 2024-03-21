@@ -36,9 +36,6 @@ Open [this link in browser](https://users.metropolia.fi/~eemiljka/postit/) to se
 
 ![Upload-2](screenshots/upload-2.png)
 
-# API
-
-Teacher's API.
 
 # Functionalities
 
